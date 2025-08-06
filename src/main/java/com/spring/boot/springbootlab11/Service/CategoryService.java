@@ -44,4 +44,12 @@ public class CategoryService {
         categoryRepository.delete(oldCategory);
 
     }
+
+    // Extra:
+    // get all categories containing a word
+
+    public List<Category> filterCategoriesByName(String name){
+        return categoryRepository.filterCategoriesByNameLike(name);
+    }
+
 }

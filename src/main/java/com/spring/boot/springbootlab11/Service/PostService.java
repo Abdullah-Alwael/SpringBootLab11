@@ -52,7 +52,6 @@ public class PostService {
     }
 
     // Extra:
-
     // filter posts by user_id and category between two dates
 
     public List<Post> filterByUserIdAndCategoryIdWithPublishDateBetween(Integer userId, Integer categoryId,

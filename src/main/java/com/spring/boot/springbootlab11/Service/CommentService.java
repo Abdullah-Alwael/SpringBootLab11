@@ -49,6 +49,7 @@ public class CommentService {
 
     }
 
+    // Extra:
     // filter comment by content and postId
     public List<Comment> filterCommentsByContentAndPostId(String content, Integer postId){
         return commentRepository.filterCommentsByContentAndPostId(content,postId);
@@ -62,4 +63,7 @@ public class CommentService {
         return commentRepository.findCommentsByCommentDateBetweenAndPostId(commentDateAfter, commentDateBefore, postId);
 
     }
+
+    // TODO get all comments that are under a category
+
 }

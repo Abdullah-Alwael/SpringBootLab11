@@ -47,4 +47,9 @@ public class CategoryController {
         categoryService.deleteCategory(category_id);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Category deleted successfully"));
     }
+
+    @GetMapping("/filter/{name}")
+    public ResponseEntity<?> filterCategoriesByName(@PathVariable String name){
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.filterCategoriesByName(name));
+    }
 }

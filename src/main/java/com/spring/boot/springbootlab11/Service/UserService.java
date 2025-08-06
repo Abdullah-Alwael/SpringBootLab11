@@ -50,7 +50,6 @@ public class UserService {
     }
 
     // Extra:
-
     // check username and password
 
     public void checkUserNameAndPassword(String userName, String password){
