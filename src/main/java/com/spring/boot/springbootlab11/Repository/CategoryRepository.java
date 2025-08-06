@@ -12,7 +12,7 @@ public interface CategoryRepository extends JpaRepository<Category,Integer> {
     Category findCategoryByCategoryId(Integer categoryId);
 
     // get all categories containing a word
-    @Query("select c from Category c where c.name like ?1")
+    @Query("select c from Category c where c.name like '%?1%'")
     List<Category> filterCategoriesByNameLike(String name);
 
 }
