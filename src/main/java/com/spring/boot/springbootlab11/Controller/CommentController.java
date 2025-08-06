@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api/v1/comment")
 @RequiredArgsConstructor
@@ -46,5 +48,23 @@ public class CommentController {
     public ResponseEntity<?> deleteComment(@PathVariable Integer comment_id) {
         commentService.deleteComment(comment_id);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Comment deleted successfully"));
+    }
+
+    @GetMapping("/filter/{content}/{postId}")
+    public ResponseEntity<?> filterCommentsByContentAndPostId(@PathVariable String content, @PathVariable Integer postId){
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.filterCommentsByContentAndPostId(content,
+                postId));
+
+    }
+
+    @GetMapping("/filter/date-between/{after}/{before}/{postId}")
+    public ResponseEntity<?> findCommentsByCommentDateBetweenAndPostId(@PathVariable LocalDate after,
+                                                                       @PathVariable LocalDate before,
+                                                                       @PathVariable Integer postId){
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.findCommentsByCommentDateBetweenAndPostId(
+                after,
+                before,
+                postId));
+
     }
 }

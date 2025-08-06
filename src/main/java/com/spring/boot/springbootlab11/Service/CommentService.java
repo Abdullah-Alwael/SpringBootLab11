@@ -6,6 +6,7 @@ import com.spring.boot.springbootlab11.Repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -45,6 +46,20 @@ public class CommentService {
         }
 
         commentRepository.delete(oldComment);
+
+    }
+
+    // filter comment by content and postId
+    public List<Comment> filterCommentsByContentAndPostId(String content, Integer postId){
+        return commentRepository.filterCommentsByContentAndPostId(content,postId);
+    }
+
+    // filter comment between two dates and postId
+    public List<Comment> findCommentsByCommentDateBetweenAndPostId(LocalDate commentDateAfter,
+                                                                   LocalDate commentDateBefore,
+                                                                   Integer postId){
+
+        return commentRepository.findCommentsByCommentDateBetweenAndPostId(commentDateAfter, commentDateBefore, postId);
 
     }
 }
