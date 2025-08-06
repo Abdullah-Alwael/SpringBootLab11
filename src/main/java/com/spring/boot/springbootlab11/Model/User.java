@@ -20,12 +20,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @Column(columnDefinition = "varchar(30) not null")
+    @Column(columnDefinition = "varchar(30) not null unique")
     @NotEmpty(message = "email should not be empty")
     @Email(message = "email must be valid")
     private String email;
 
-    @Column(columnDefinition = "varchar(30) not null")
+    @Column(columnDefinition = "varchar(30) not null unique")
     @NotEmpty(message = "userName should not be empty")
     private String userName;
 
