@@ -1,6 +1,7 @@
 package com.spring.boot.springbootlab11.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class User {
 
     @Column(columnDefinition = "varchar(30) not null")
     @NotEmpty(message = "email should not be empty")
+    @Email(message = "email must be valid")
     private String email;
 
     @Column(columnDefinition = "varchar(30) not null")

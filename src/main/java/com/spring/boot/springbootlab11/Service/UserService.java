@@ -15,6 +15,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public void addUser(User user){
+        user.setRegistrationDate(LocalDate.now());
         userRepository.save(user);
     }
 
@@ -32,7 +33,6 @@ public class UserService {
         oldUser.setUserName(user.getUserName());
         oldUser.setEmail(user.getEmail());
         oldUser.setPassword(user.getPassword());
-        oldUser.setRegistrationDate(user.getRegistrationDate());
 
         userRepository.save(oldUser);
 
