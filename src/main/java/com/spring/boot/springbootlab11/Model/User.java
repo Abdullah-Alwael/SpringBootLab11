@@ -17,7 +17,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
+    private Integer userId;
 
     @Column(columnDefinition = "varchar(30) not null")
     @NotEmpty(message = "email should not be empty")
@@ -33,5 +33,5 @@ public class User {
 
     @Column(columnDefinition = "datetime not null default now()")
     @NotNull(message = "registration_date should not be empty")
-    private LocalDate registration_date;
+    private LocalDate registrationDate;
 }

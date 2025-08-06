@@ -17,15 +17,15 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer post_id;
+    private Integer postId;
 
     @Column(columnDefinition = "int not null")
-    @NotNull(message = "category_id should not be empty")
-    private Integer category_id;
+    @NotNull(message = "categoryId should not be empty")
+    private Integer categoryId;
 
     @Column(columnDefinition = "int not null")
-    @NotNull(message = "user_id should not be empty")
-    private Integer user_id;
+    @NotNull(message = "userId should not be empty")
+    private Integer userId;
 
     @Column(columnDefinition = "varchar(30) not null")
     @NotEmpty(message = "title should not be empty")
@@ -36,7 +36,7 @@ public class Post {
     private String content;
 
     @Column(columnDefinition = "datetime not null default now()")
-    @NotNull(message = "publish_date should not be empty")
-    private LocalDate publish_date;
+    @NotNull(message = "publishDate should not be empty")
+    private LocalDate publishDate;
 
 }

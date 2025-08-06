@@ -17,22 +17,22 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer comment_id;
+    private Integer commentId;
 
     @Column(columnDefinition = "int not null")
-    @NotNull(message = "user_id should not be empty")
-    private Integer user_id;
+    @NotNull(message = "userId should not be empty")
+    private Integer userId;
 
     @Column(columnDefinition = "int not null")
-    @NotNull(message = "post_id should not be empty")
-    private Integer post_id;
+    @NotNull(message = "postId should not be empty")
+    private Integer postId;
 
     @Column(columnDefinition = "varchar(30) not null")
     @NotEmpty(message = "content should not be empty")
     private String content;
 
     @Column(columnDefinition = "datetime not null default now()")
-    @NotNull(message = "comment_date should not be empty")
-    private LocalDate comment_date;
+    @NotNull(message = "commentDate should not be empty")
+    private LocalDate commentDate;
 
 }

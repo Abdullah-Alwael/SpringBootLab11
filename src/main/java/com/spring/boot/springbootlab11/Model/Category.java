@@ -14,7 +14,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer category_id;
+    private Integer categoryId;
 
     @Column(columnDefinition = "varchar(30) not null")
     @NotEmpty(message = "name should not be empty")
