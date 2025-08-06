@@ -6,6 +6,7 @@ import com.spring.boot.springbootlab11.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -46,5 +47,24 @@ public class UserService {
 
         userRepository.delete(oldUser);
 
+    }
+
+    // Extra:
+
+    // check username and password
+
+    public void checkUserNameAndPasswrod(String userName, String password){
+        User checkUser = userRepository.checkUserNameAndPassword(userName, password);
+
+        if (checkUser == null){
+            throw new ApiException("Error user not found");
+        }
+
+        // nothing else to check
+    }
+
+    // get all users registered between a range of date
+    public List<User> getUsersRegisteredBetween(LocalDate registrationDateAfter, LocalDate registrationDateBefore){
+        return userRepository.findUserByRegistrationDateBetween(registrationDateAfter, registrationDateBefore);
     }
 }
