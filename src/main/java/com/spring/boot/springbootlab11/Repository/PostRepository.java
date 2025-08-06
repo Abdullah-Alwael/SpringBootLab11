@@ -20,4 +20,7 @@ public interface PostRepository extends JpaRepository<Post,Integer> {
     List<Post> findPostsByTitleLikeOrContentLikeAndPublishDateBetween(String title, String content,
                                                                       LocalDate publishDateAfter,
                                                                       LocalDate publishDateBefore);
+
+    // find all posts by categoryId
+    List<Post> findPostsByCategoryId(Integer categoryId);
 }

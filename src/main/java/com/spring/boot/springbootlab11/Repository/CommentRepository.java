@@ -14,10 +14,14 @@ public interface CommentRepository extends JpaRepository<Comment,Integer> {
 
     // filter comment by content and postId
     @Query("select c from Comment c where c.content like ?1 and c.postId = ?2")
-    List<Comment> filterCommentsByContentAndPostId(String content, Integer postId);
+    List<Comment> filterCommentsByContentLikeAndPostId(String content, Integer postId);
 
     // filter comment between two dates and postId
     List<Comment> findCommentsByCommentDateBetweenAndPostId(LocalDate commentDateAfter,
                                                             LocalDate commentDateBefore,
                                                             Integer postId);
+
+    // get all comments that are under a category using PostService dependency injection in the comments service
+    @Query("select c from Comment c where c.postId in ?1")
+    List<Comment> filterCommentsByPostIds(List<Integer> postIds);
 }

@@ -50,14 +50,14 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Comment deleted successfully"));
     }
 
-    @GetMapping("/filter/{content}/{postId}")
+    @GetMapping("/filter/content/{content}/post/{postId}")
     public ResponseEntity<?> filterCommentsByContentAndPostId(@PathVariable String content, @PathVariable Integer postId){
         return ResponseEntity.status(HttpStatus.OK).body(commentService.filterCommentsByContentAndPostId(content,
                 postId));
 
     }
 
-    @GetMapping("/filter/date-between/{after}/{before}/{postId}")
+    @GetMapping("/filter/date-between/{after}/{before}/post/{postId}")
     public ResponseEntity<?> findCommentsByCommentDateBetweenAndPostId(@PathVariable LocalDate after,
                                                                        @PathVariable LocalDate before,
                                                                        @PathVariable Integer postId){
@@ -66,5 +66,10 @@ public class CommentController {
                 before,
                 postId));
 
+    }
+
+    @GetMapping("/filter/category/{categoryId}")
+    public ResponseEntity<?> filterCommentsByCategory(@PathVariable Integer categoryId){
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.filterCommentsByCategory(categoryId));
     }
 }

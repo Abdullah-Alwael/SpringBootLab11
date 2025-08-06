@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentService {
     private final CommentRepository commentRepository;
+    private final PostService postService;
 
     public void addComment(Comment comment){
         commentRepository.save(comment);
@@ -52,7 +53,7 @@ public class CommentService {
     // Extra:
     // filter comment by content and postId
     public List<Comment> filterCommentsByContentAndPostId(String content, Integer postId){
-        return commentRepository.filterCommentsByContentAndPostId(content,postId);
+        return commentRepository.filterCommentsByContentLikeAndPostId(content,postId);
     }
 
     // filter comment between two dates and postId
@@ -64,6 +65,8 @@ public class CommentService {
 
     }
 
-    // TODO get all comments that are under a category
-
+    // get all comments that are under a category using PostService dependency injection in the comments service
+    public List<Comment> filterCommentsByCategory(Integer categoryId){
+        return commentRepository.filterCommentsByPostIds(postService.getPostIdsUnderACategory(categoryId));
+    }
 }

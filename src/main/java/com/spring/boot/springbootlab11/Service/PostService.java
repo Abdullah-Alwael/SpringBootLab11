@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -69,5 +70,18 @@ public class PostService {
         return postRepository.findPostsByTitleLikeOrContentLikeAndPublishDateBetween(title, content,
                 publishDateAfter,
                 publishDateBefore);
+    }
+
+    // get all postIds under certain category
+    public List<Integer> getPostIdsUnderACategory(Integer categoryId){
+        List<Post> postsUnderCategory = postRepository.findPostsByCategoryId(categoryId);
+        List<Integer> postIdsUnderCategory = new ArrayList<>();
+
+        for (Post p:postsUnderCategory){
+            postIdsUnderCategory.add(p.getPostId());
+        }
+
+        return postIdsUnderCategory;
+
     }
 }
