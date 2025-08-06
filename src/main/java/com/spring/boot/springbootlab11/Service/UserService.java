@@ -53,7 +53,7 @@ public class UserService {
 
     // check username and password
 
-    public void checkUserNameAndPasswrod(String userName, String password){
+    public void checkUserNameAndPassword(String userName, String password){
         User checkUser = userRepository.checkUserNameAndPassword(userName, password);
 
         if (checkUser == null){

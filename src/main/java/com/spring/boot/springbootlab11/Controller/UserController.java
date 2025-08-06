@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
@@ -47,6 +49,18 @@ public class UserController {
         userService.deleteUser(user_id);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("User deleted successfully"));
     }
+
+    @GetMapping("/check-user-name-and-password/{userName}/{password}")
+    public ResponseEntity<?> checkUserNameAndPassword(@PathVariable String userName, @PathVariable String password){
+        userService.checkUserNameAndPassword(userName, password);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("UserName and password are correct"));
+    }
+
+    @GetMapping("/filter/date-between/{after}/{before}")
+    public ResponseEntity<?> getUsersRegisteredBetween(@PathVariable LocalDate after, @PathVariable LocalDate before){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUsersRegisteredBetween(after,before));
+    }
+
 
 
 }
