@@ -27,7 +27,7 @@ public class Comment {
     @NotNull(message = "postId should not be empty")
     private Integer postId;
 
-    @Column(columnDefinition = "varchar(30) not null")
+    @Column(columnDefinition = "varchar(255) not null")
     @NotEmpty(message = "content should not be empty")
     private String content;
 

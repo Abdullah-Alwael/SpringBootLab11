@@ -31,7 +31,7 @@ public class Post {
     @NotEmpty(message = "title should not be empty")
     private String title;
 
-    @Column(columnDefinition = "varchar(30) not null")
+    @Column(columnDefinition = "varchar(255) not null")
     @NotEmpty(message = "content should not be empty")
     private String content;
 

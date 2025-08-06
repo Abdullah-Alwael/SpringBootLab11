@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api/v1/post")
 @RequiredArgsConstructor
@@ -46,5 +48,32 @@ public class PostController {
     public ResponseEntity<?> deletePost(@PathVariable Integer post_id) {
         postService.deletePost(post_id);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Post deleted successfully"));
+    }
+
+    @GetMapping("/filter/user/{userId}/category/{categoryId}/date-between/{after}/{before}")
+    public ResponseEntity<?> filterByUserIdAndCategoryIdWithPublishDateBetween(@PathVariable Integer userId,
+                                                                               @PathVariable Integer categoryId,
+                                                                               @PathVariable LocalDate after,
+                                                                               @PathVariable LocalDate before) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(postService.filterByUserIdAndCategoryIdWithPublishDateBetween(
+                userId,
+                categoryId,
+                after,
+                before
+        ));
+    }
+
+    @GetMapping("/filter/{query}/date-between/{after}/{before}")
+    public ResponseEntity<?> filterPostsByTitleOrContentWithPublishDateBetween(@PathVariable String query,
+                                                                               @PathVariable LocalDate after,
+                                                                               @PathVariable LocalDate before){
+
+        return ResponseEntity.status(HttpStatus.OK).body(postService.filterPostsByTitleOrContentWithPublishDateBetween(
+                query,
+                query,
+                after,
+                before));
+
     }
 }
