@@ -34,6 +34,5 @@ public class User {
     private String password;
 
     @Column(columnDefinition = "datetime not null default now()")
-    @NotNull(message = "registration_date should not be empty")
     private LocalDate registrationDate;
 }
