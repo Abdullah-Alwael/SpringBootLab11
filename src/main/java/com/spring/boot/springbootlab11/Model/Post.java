@@ -36,7 +36,6 @@ public class Post {
     private String content;
 
     @Column(columnDefinition = "datetime not null default now()")
-    @NotNull(message = "publishDate should not be empty")
     private LocalDate publishDate;
 
 }

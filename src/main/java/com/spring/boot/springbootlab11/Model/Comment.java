@@ -32,7 +32,6 @@ public class Comment {
     private String content;
 
     @Column(columnDefinition = "datetime not null default now()")
-    @NotNull(message = "commentDate should not be empty")
     private LocalDate commentDate;
 
 }

@@ -16,6 +16,7 @@ public class CommentService {
     private final PostService postService;
 
     public void addComment(Comment comment){
+        comment.setCommentDate(LocalDate.now());
         commentRepository.save(comment);
     }
 
@@ -31,7 +32,6 @@ public class CommentService {
         }
 
         oldComment.setContent(comment.getContent());
-        oldComment.setCommentDate(comment.getCommentDate());
         oldComment.setUserId(comment.getUserId());
         oldComment.setPostId(comment.getPostId());
 

@@ -16,6 +16,7 @@ public class PostService {
     private final PostRepository postRepository;
 
     public void addPost(Post post) {
+        post.setPublishDate(LocalDate.now());
         postRepository.save(post);
     }
 
@@ -35,7 +36,6 @@ public class PostService {
 
         oldPost.setTitle(post.getTitle());
         oldPost.setContent(post.getContent());
-        oldPost.setPublishDate(post.getPublishDate());
 
         postRepository.save(oldPost);
 
